@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Fortune Cookie Harmony Lotto</title>
+
+        <!-- meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Tailwind CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+    </head>
+    <body>
+        <div id="app-wrapper" class="p-2">
+
+            <div id="title" class="pt-4">
+                <div class="text-center font-emilys text-primary text-5xl">
+                    Cryptic Cookies
+                </div>
+                <div class="pt-2 text-center font-emilys text-primary text-md">
+                    The Fortune Cookie Penny Lotto
+                </div>
+                <div class="pt-4 flex justify-center">
+                    <img 
+                        class="w-64"
+                        alt="fortune cookie vending machine"
+                        src="assets/img/blue.png"
+                    />
+                </div>
+            </div>
+            
+            <div id="pre-connect-controls" class="pt-6 flex justify-center">
+                <div class="w-full mx-2 sm:max-w-xs">
+                    <div id="wallet-connect-btn" class="action-button">
+                        Connect Wallet
+                    </div>
+                    <div id="wallet-connect-pending" class="hidden action-button" disabled="true">
+                        Connection pending...
+                    </div>
+                    <div id="show-game-rules-btn1" class="action-button">
+                        Game
+                    </div>
+                </div>
+            </div>
+            
+            <div id="post-connect-controls" class="pt-6 flex justify-center items-center hidden">
+                <div class="w-full mx-2 sm:max-w-xs">
+                    <div id="buy-cookie-btn" class="action-button">
+                        Buy Cookie
+                    </div>
+                    <div id="show-game-rules-btn2" class="action-button">
+                        Game
+                    </div>
+                    <div id="show-contract-btn" class="action-button">
+                        Contract
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- End App Wrapper -->
+
+        <!-- modal window -->
+        <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
+            
+            <div id="close-modal-btn-container" class="pt-4 pr-2 sm:pr-4 flex justify-end">
+                <div id="close-modal-btn" class="cursor-pointer text-4xl rounded border-2 border-primary bg-secondary p-4 m-4">
+                    &times;
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <div id="sub-modals" class="pt-4 mb-6 w-full sm:max-w-sm rounded bg-secondary text-primary font-signika">
+                    <!-- Contract Modal Window -->
+                    <div id="contract-body" class="hidden">
+                        <div class="p-4">
+                            <div class="text-3xl underline decoration-dotted decoration-primary text-center font-bold mb-4">
+                                Contract Metadata
+                            </div>
+                            <div class="grid grid-rows-13 grid-cols-5 gap-y-2 text-xs font-monospace">
+                                <div class="">
+                                    Network
+                                </div>
+                                <div id="contract-network" class="contract-item">
+                                    Harmony
+                                </div>
+                                <div class="">
+                                    Owner
+                                </div>
+                                <div id="contract-owner" class="contract-item">
+                                    0x0987654321234567890
+                                </div>
+                                <div class="">
+                                    Address
+                                </div>
+                                <div id="contract-address" class="contract-item">
+                                    0x123456789987654321
+                                </div>
+                                <div class="">
+                                    Version
+                                </div>
+                                <div id="contract-version" class="contract-item">
+                                    0
+                                </div>
+                                <div class="">
+                                    Deployed
+                                </div>
+                                <div id="contract-deployed" class="contract-item">
+                                    January 21, 2022
+                                </div>
+                                <div class="">
+                                    Balance
+                                </div>
+                                <div id="contract-balance" class="contract-item">
+                                    0
+                                </div>
+                                <div class="">
+                                    Jackpot
+                                </div>
+                                <div id="contract-jackpot" class="contract-item">
+                                    0
+                                </div>
+                                <div class="">
+                                    Price
+                                </div>
+                                <div id="contract-price" class="contract-item">
+                                    0
+                                </div>
+                                <div class="">
+                                    Nonces
+                                </div>
+                                <div id="contract-nonces" class="contract-item">
+                                    0
+                                </div>
+                                <div class="">
+                                    Fortunes
+                                </div>
+                                <div id="contract-fortunes" class="contract-item">
+                                    0
+                                </div>
+                                <div class="">
+                                    Lucky Num
+                                </div>
+                                <div id="contract-luckynum" class="contract-item">
+                                    0
+                                </div>
+                                <div class="">
+                                    Cookies Sold
+                                </div>
+                                <div id="contract-sold" class="contract-item">
+                                    0
+                                </div>
+                                <div class="">
+                                    Winners
+                                </div>
+                                <div id="contract-winners" class="contract-item">
+                                    0
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Rules Modal Window -->
+                    <div id="game-rules-body" class="grid grid-rows-1 hidden">
+                        <div class="p-4 text-sm">
+                            <div class="text-3xl underline decoration-dotted decoration-primary text-center font-bold mb-4">
+                                Game Rules
+                            </div>
+                            <div class="mb-4">
+                                <div id="question-what-is-this" class="text-xl font-bold cursor-pointer">
+                                    What is this? 
+                                </div>
+                                <div id="answer-what-is-this" class="hidden">
+                                    The Crypto Cookies Fortune Lottery is a simple game of chance.
+                                    <br/> 
+                                    When you purchase a Fortune Cookie you will receive a fortune 
+                                    chosen at random.
+                                    <br/>
+                                    Each Fortune also contains a number: if your number matches 
+                                    the Lucky Number, your cryptocurrency wallet will receive a
+                                    jackpot payment. 
+                                    <br/>
+                                    After a winning jackpot is paid out, the system will randomly
+                                    choose a new winning number.
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div id="question-how-do-i-play" class="text-xl font-bold cursor-pointer">
+                                    How do I play?
+                                </div>
+                                <div id="answer-how-do-i-play" class="hidden">
+                                    <ol>
+                                        <li>
+                                            <span class="font-bold">1.) Setup your wallet</span>
+                                            <ol class="pl-4">
+                                                <li>
+                                                    - Install a browser extension wallet like Metamask
+                                                </li>
+                                                <li>
+                                                    - Here are instructions on 
+                                                    <a class="text-white font-bold" href="https://docs.harmony.one/home/network/wallets/browser-extensions-wallets/metamask-wallet" target="_blank">
+                                                        how to configure Harmony on Metamask
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    - Fund your wallet with Harmony ONE tokens
+                                                </li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            <span class="font-bold">2.) Connect your wallet</span>
+                                            <ol class="pl-4">
+                                                <li>
+                                                    - Click the Connect Wallet button
+                                                </li>
+                                                <li>
+                                                    - Your wallet will prompt you to allow access
+                                                </li>
+                                                <li>
+                                                    - NOTE: to play you must allow the DApp access to your wallet.
+                                                </li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            <span class="font-bold">3.) Review the smart contract data (optional)</span>
+                                            <ol class="pl-4">
+                                                <li>
+                                                    - After connecting, click the Contract button
+                                                </li>
+                                                <li>
+                                                    - This will show the current Lucky Number and other metadata.
+                                                </li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            <span class="font-bold">4.) Buy a Fortune Cookie</span>
+                                            <ol class="pl-4">
+                                                <li>
+                                                    - Click the Buy Cookie button
+                                                </li>
+                                                <li>
+                                                    - Your wallet will prompt you to allow the transaction.
+                                                </li>
+                                                <li>
+                                                    - Review your purchase
+                                                </li>
+                                                <li>
+                                                    - Approve the purchase
+                                                </li>
+                                                <li>
+                                                    - Your transaction will be submitted to the network
+                                                </li>
+                                                <li>
+                                                    - Please be patient, network latency will affect completion speed
+                                                </li>
+                                                <li>
+                                                    - When the transaction completes your Fortune will be displayed
+                                                </li>
+                                                <li>
+                                                    - If you win, your wallet will automatically receive the jackpot
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div id="question-what-price" class="text-lg font-bold cursor-pointer">
+                                    How much are the price & jackpot?
+                                </div>
+                                <div id="answer-what-price" class="hidden">
+                                    The price per Fortune Cookie is <span id="game-rules-price-tag">1</span> Harmony $ONE.
+                                    <br/>
+                                    The jackpot is always half the current contract balance.
+                                    <br/>
+                                    The contract balance is half the $ONE tokens paid in, minus the jackpots paid out.
+                                    <br/>
+                                    The other half of $ONE tokens paid are the admin fee.
+                                    <br/>
+                                    The starting contract balance will be funded with 100 $ONE.
+                                    <br/>
+                                    Click the Contract button for current price, jackpot, etc.
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div id="question-what-odds" class="text-lg font-bold cursor-pointer">
+                                    What are the odds of winning?
+                                </div>
+                                <div id="answer-what-odds" class="hidden">
+                                    The odds are 1 in the total number of Fortunes.
+                                    <br/>
+                                    Click the Contract button to see the number of Fortunes.
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div id="question-multiple-winners" class="text-lg font-bold cursor-pointer">
+                                    What if there are multiple winners?
+                                </div>
+                                <div id="answer-multiple-winners" class="hidden">
+                                    There will not be multiple winners.
+                                    <br/>
+                                    The contract locks during the purchase of each Fortune,
+                                    only allowing one purchase at a time. 
+                                    <br/>
+                                    If your purchase fails with a lock-out message, 
+                                    simply try again after a few seconds.
+                                    <br/>
+                                    Only one winner will win the jackpot.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fortune Modal -->
+                    <div id="fortune-body" class="hidden">
+                        <div class="p-4 text-sm">
+                            <div class="text-3xl underline decoration-dotted decoration-primary text-center font-bold mb-4">
+                                Your Fortune
+                            </div>
+                            <div class="grid grid-rows-4 grid-cols-2 gap-4">
+                                <div id="fortune-text" class="col-span-2 text-xl text-center">
+                                    <!-- fortune text here -->
+                                </div>
+                                <div class="text-4xl font-bold">
+                                    <div id="fortune-lucky-num" class="py-2 text-center">
+                                        0
+                                    </div>
+                                </div>
+                                <div class="text-4xl font-bold">
+                                    <div id="fortune-your-num" class="py-2 text-center">
+                                        0
+                                    </div>
+                                </div>
+                                <div class="text-sm italic text-center border-t-2 border-dotted border-white">
+                                    Lucky Number
+                                </div>
+                                <div class="text-sm italic text-center border-t-2 border-dotted border-white">
+                                    Your Number
+                                </div>
+                                <div id="fortune-payout" class="col-span-2 text-2xl font-bold text-center">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- End Modal Window Wrapper -->
+
+
+        <!-- JAVASCRIPT -->
+
+        <!-- Moment.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- web3 -->
+        <script src="./assets/js/web3.min.js"></script>
+
+        <script src="./assets/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.action-button {
+    @apply my-2 p-2 cursor-pointer bg-secondary font-paytone text-primary text-center border-2 border-tertiary rounded w-full;
+}
+
+.tab-button{
+    @apply px-2 py-1 font-paytone cursor-pointer text-primary underline decoration-dotted decoration-sky-100 bg-sky-100 border-sky-100 border-x-2 border-t-2 border-b-0 rounded-t;
+}
+
+.active-tab{
+    @apply bg-secondary border-tertiary text-primary cursor-not-allowed underline decoration-dotted;
+}
+
+.contract-item{
+    @apply col-span-4 text-right border-b border-white border-dotted;
+}
