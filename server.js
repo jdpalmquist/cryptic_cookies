@@ -35,8 +35,8 @@ app.use(Express.static('./public/')); // statically serve the ./public directory
 //
 //
 //
-app.route('/abi/automat').get(api.automat_abi);
-app.route('/net/automat').get(api.automat_net);
+app.route('/abi/cryptic').get(api.cryptic_abi);
+app.route('/net/cryptic').get(api.cryptic_net);
 
 app.route('/abi/payment').get(api.payment_abi);
 app.route('/net/payment').get(api.payment_net);

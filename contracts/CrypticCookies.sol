@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/Address.sol";
 
 uint constant INT_MAX = 2**128 - 1; // half the size of integer max value
 
-contract Automat is Ownable {
+contract CrypticCookies is Ownable {
     using Address for address;
     using Counters for Counters.Counter;
 
@@ -46,8 +46,8 @@ contract Automat is Ownable {
     event UpdateJackpotIndex(uint256 indexed newIndex, uint256 indexed timestamp);
     event Generated(uint256 indexed chosenIndex, uint256 indexed winningIndex, uint256 indexed payout);
 
-    constructor(address PaymentMGR_) {
-        _PaymentMGR = PaymentMGR_;
+    constructor() {
+        _PaymentMGR = msg.sender;
 
         _price = 1000000000000000000; // 1 $ONE
 

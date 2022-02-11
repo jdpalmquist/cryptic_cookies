@@ -18,7 +18,7 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const Secrets = require('./.secret'); // contains private keys, not to be committed to the repo
 
@@ -112,30 +112,24 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
       gas: 6700000,
     },
-    /*
-    testnet: {
+    harmony_testnet: {
       provider: () => {
         return new HDWalletProvider({
-          Secrets.mnemonic,
-          providerOrUrl: 'https://api.s0.b.hmny.io', // https://api.s0.t.hmny.io for mainnet
-          derivationPath: `m/44'/1023'/0'/0/`
+          mnemonic: Secrets.mnemonic,
+          providerOrUrl: 'https://api.s0.b.hmny.io', // testnet, shard 0
         });
       },
-      network_id: 1666700000, // 1666600000 for mainnet, shard 0
+      network_id: 1666700000, //testnet, shard 0
     },
-    testnetHar: {
+    /*
+    harmony_mainnet: {
       provider: () => {
-        if (!privateKeyTest.trim()) {
-          throw new Error(
-            'Please enter a private key with funds, you can use the default one'
-          );
-        }
         return new HDWalletProvider({
-          privateKeys: [privateKeyTest],
-          providerOrUrl: 'https://api.s0.b.hmny.io',
+          mnemonic: Secrets.mnemonic,
+          providerOrUrl: 'https://api.s0.t.hmny.io', //mainnet, shard 0
         });
       },
-      network_id: 1666700000,
+      network_id:  1666600000, //mainnet, shard 0
     },
     */
     // Another network with more advanced options...

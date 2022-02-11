@@ -12,7 +12,7 @@ let web3 = null;
 let isWeb3Available = false;
 let contract = null;
 let Artifacts = {
-    Automat: {
+    Cryptic: {
         abi: null,
         net: null,
     }
@@ -60,13 +60,13 @@ async function connectWallet(){
             //get the chain ID the wallet is connected to
             await getChainId();
 
-            if( typeof Artifacts.Automat.net[chain_id] != 'undefined' &&
-                Artifacts.Automat.net[chain_id] != null){
+            if( typeof Artifacts.Cryptic.net[chain_id] != 'undefined' &&
+                Artifacts.Cryptic.net[chain_id] != null){
 
                 //instantiate a contract instance
                 contract = new web3.eth.Contract(
-                    Artifacts.Automat.abi,
-                    Artifacts.Automat.net[chain_id].address
+                    Artifacts.Cryptic.abi,
+                    Artifacts.Cryptic.net[chain_id].address
                 );
                 
                 set_ui_connected();
@@ -602,20 +602,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
     
 
     // fetch the Automat ABI 
-    myRequest = new Request('abi/automat');
+    myRequest = new Request('abi/cryptic');
     fetch(myRequest)
         .then(response => response.json())
         .then(data => {
-            Artifacts.Automat.abi = data;
+            Artifacts.Cryptic.abi = data;
         })
         .catch(console.error);
 
     // fetch the Automat Networks
-    myRequest = new Request('net/automat'); 
+    myRequest = new Request('net/cryptic'); 
     fetch(myRequest)
         .then(response => response.json())
         .then(data => {
-            Artifacts.Automat.net = data;
+            Artifacts.Cryptic.net = data;
         })
         .catch(console.error);
 });

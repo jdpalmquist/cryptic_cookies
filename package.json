@@ -1,26 +1,14 @@
 {
-  "name": "automat",
-  "version": "1.0.0",
-  "description": "automat.finance",
+  "name": "cryptic_cookies",
+  "version": "0.0.1",
+  "description": "Fortune Cookie Penny Lottery",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js --mode dev",
-    "build-css": "tailwindcss build -i src/css/styles.css -o public/assets/css/styles.css"
+  "directories": {
+    "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/hemlock/automat.git"
-  },
-  "author": "jesse.palmquist@gmail.com",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/hemlock/automat/issues"
-  },
-  "homepage": "https://gitlab.com/hemlock/automat#readme",
   "dependencies": {
     "@openzeppelin/contracts": "^4.4.1",
-    "@truffle/hdwallet-provider": "^2.0.2",
+    "@truffle/hdwallet-provider": "2.0.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "helmet": "^4.4.1",
@@ -32,5 +20,20 @@
     "eth-gas-reporter": "^0.2.23",
     "mocha": "^9.1.3",
     "truffle-assertions": "^0.9.2"
-  }
+  },
+  "scripts": {
+    "test": "truffle test",
+    "start": "node server.js --mode dev",
+    "build-css": "tailwindcss build -i src/css/styles.css -o public/assets/css/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdpalmquist/cryptic_cookies.git"
+  },
+  "author": "JDPalmquist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdpalmquist/cryptic_cookies/issues"
+  },
+  "homepage": "https://github.com/jdpalmquist/cryptic_cookies#readme"
 }
